@@ -1,0 +1,33 @@
+﻿<div>
+    <center><h1>Cors Example</h1></center>
+    <table class="table table-strip">
+        <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+            </tr>
+        <tbody id="MyData">
+            
+
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            type:"GET",
+            url:"https://localhost:7059/Student/GetAllStudents",
+            dataType: 'json',
+            success:function(response){
+                $("#MyData").empty();
+                $.each(response ,function(name,value){
+                    $("#MyData").append('<tr><td>'+value.Id+'</td><td>'+value.Name+'</td><td>'+value.Age+'</td><td>'+value.Address+'</td></tr>');
+                });
+                
+            }
+            
+
+        });
+ });
+</script>
